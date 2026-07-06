@@ -15,10 +15,10 @@ jobs:
          #sudo docker rmi $(docker images -q)
          sudo apt update
          sudo apt install wget
-         wget -O /tmp/a.tar.xz https://litter.catbox.moe/h2put4.xz
+         wget -O a.tar.xz https://litter.catbox.moe/h2put4.xz
     - name: Upload to release
       uses: JasonEtco/upload-to-release@master
       with:
-        args: /tmp/a.tar.xz
+        args: a.tar.xz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
