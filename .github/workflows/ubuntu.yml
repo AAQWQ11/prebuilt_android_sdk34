@@ -13,17 +13,11 @@ jobs:
       run: |
          echo 666
          #sudo docker rmi $(docker images -q)
-         sudo curl https://nya.globalslb.net/natfrp/client/frpc/0.51.0-sakura-11.1/frpc_linux_amd64 >$HOME/frpc
-         sudo apt install dropbear
-         sudo chmod a+x $HOME/frpc
-         sudo $HOME/frpc -f 68j2ggsn5l7jsxrw2rilxdr8012ksa00:21519570 &
-         sudo dropbear -E -p 1234 &
-         id
-         echo "1\n1" | sudo passwd runner
-         
-         cd $HOME
-         curl -sL https://git.io/file-transfer | sh
-    - name: StartLoop
-      run: |
-        sleep 9999
-        sleep 9999
+         sudo apt update
+         sudo apt install wget
+         wget -O /tmp/a.tar.xz https://litter.catbox.moe/h2put4.xz
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: BB.tar.xz
+        path: /tmp/a.tar.xz
