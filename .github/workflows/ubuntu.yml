@@ -16,8 +16,9 @@ jobs:
          sudo apt update
          sudo apt install wget
          wget -O /tmp/a.tar.xz https://litter.catbox.moe/h2put4.xz
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v7.0.1
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
       with:
-        name: BB.tar.xz
-        path: /tmp/a.tar.xz
+        args: /tmp/a.tar.xz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
